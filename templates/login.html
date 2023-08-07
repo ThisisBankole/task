@@ -7,25 +7,35 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="header">
-        <h1>Login</h1>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Login</h1>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="post">
+                            {{ form.hidden_tag() }}
+                            <div class="form-group">
+                                {{ form.email.label(class="form-label") }}
+                                {{ form.email(class="form-control") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.password.label(class="form-label") }}
+                                {{ form.password(class="form-control") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.submit(class="btn btn-primary mt-3") }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="{{url_for('register')}}"> Don't have an account? Register Here</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <div>
-            {{ form.email.label }} <br>
-            {{ form.email }}
-        </div>
-        <div>
-            {{ form.password.label }} <br>
-            {{ form.password }}
-        </div>
-        <div>
-            {{ form.submit }}
-        </div>
-    </form>
-
-    <br>
-    <a href="{{url_for('register')}}"> Don't have an account? Register Here</a>
 </body>
 </html>
