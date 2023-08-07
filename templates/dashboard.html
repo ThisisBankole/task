@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Dashboard</h1>
+    </div>
+    <h2>Add a Task</h2>
+                <form action="{{ url_for('dashboard') }}" method="post" >
+                    {{ form.hidden_tag() }}
+                    <div>
+                        {{ form.task.label }} <br>
+                        {{ form.task }}
+                    </div>
+                    <div>
+                        {{ form.date.label }} <br>
+                        {{ form.date }}
+                    </div>
+                    <div>
+                        {{ form.submit }}
+                    </div>
+                </form>
+                <br>
+                <hr>
+                <div class="table-responsive small">
+                    <h2>All Tasks</h2>
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Tasks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in tasks %}
+                            <tr>
+                                <td>
+                                    {{ t.date }}
+                                </td>
+                                <td>
+                                    {{ t.task }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+    <a href="{{url_for('logout')}}">Logout</a>
+</body>
+</html>
